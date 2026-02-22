@@ -6,8 +6,8 @@ A Netflix-inspired web application built using React and Tailwind CSS that simul
 
 ## 🚀 Live Demo
 
-🔗 Deployment Link: https://your-deployment-link.com  
-🔗 GitHub Repository: https://github.com/your-username/your-repo
+🔗 Deployment Link: drivetask-q5j1kl2va-aida-elizabath-vargheses-projects.vercel.app 
+🔗 GitHub Repository:https://github.com/Aidaelizabath/Drive_Task.git
 
 ---
 
@@ -51,8 +51,8 @@ A Netflix-inspired web application built using React and Tailwind CSS that simul
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/Aidaelizabath/Drive_Task.git
+cd Drive_Task
 ```
 
 ### 2️⃣ Install Dependencies
@@ -119,6 +119,6 @@ A short 1–2 minute video demonstrating:
 
 ## 👨‍💻 Author
 
-Your Name  
-LinkedIn: https://linkedin.com/in/your-profile  
-Email: your-email@example.com
+Aida Elizabath Varghese
+ 
+Email: aidaelizabathvarghese2003@gmail.com
