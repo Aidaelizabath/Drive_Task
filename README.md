@@ -57,13 +57,7 @@ cd Drive_Task
 npm install
 ```
 
-### 3️⃣ Add Environment Variables
 
-Create a `.env` file in the root directory and add:
-
-```env
-VITE_TMDB_API_KEY=your_tmdb_bearer_token_here
-```
 
 ### 4️⃣ Run the Development Server
 
