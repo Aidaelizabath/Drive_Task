@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './Player.css';
 import back_arrow from '../../assets/cards/back.png';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -18,7 +17,7 @@ const Player = () => {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmY2Q2NzI4N2RlNDYwOWE0MzljNDRkODVhMDhjOTZiYiIsIm5iZiI6MTc1MDM5MzY3Ni4xMDcsInN1YiI6IjY4NTRlMzRjZGE0NjlmZmJkY2RjMzkxOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RT33SySSv3wxL9K4Yzlf4_lgdY5hwR8QWliAaehYCqc'
+      Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`
     }
   };
 
@@ -29,32 +28,49 @@ const Player = () => {
         if (res.results && res.results.length > 0) {
           setApiData(res.results[0]);
         } else {
-          setApiData({ name: "No Trailer Found", key: "", published_at: "", type: "N/A" });
+          setApiData({
+            name: "No Trailer Found",
+            key: "",
+            published_at: "",
+            type: "N/A"
+          });
         }
       })
       .catch(err => console.error(err));
   }, [id]);
 
   return (
-    <div className='player'>
-      <img src={back_arrow} alt="Go back" onClick={() => { navigate(-1) }} />
+    <div className="h-screen flex flex-col items-center justify-center relative px-4">
+
+      {/* Back Button */}
+      <img
+        src={back_arrow}
+        alt="Go back"
+        onClick={() => navigate(-1)}
+        className="absolute top-5 left-5 w-12 cursor-pointer hover:scale-110 transition"
+      />
+
+      {/* Trailer */}
       {apiData.key ? (
         <iframe
-          width='90%'
-          height='90%'
+          className="w-full max-w-5xl h-[60vh] md:h-[75vh] rounded-xl"
           src={`https://www.youtube.com/embed/${apiData.key}`}
-          title='Trailer'
-          frameBorder='0'
+          title="Trailer"
           allowFullScreen
         />
       ) : (
-        <p className="no-trailer">Trailer not available for this movie.</p>
+        <p className="text-gray-400 text-lg">
+          Trailer not available for this movie.
+        </p>
       )}
-      <div className="player-info">
+
+      {/* Info Section */}
+      <div className="flex flex-wrap gap-6 justify-center mt-6 text-gray-300 text-sm md:text-base">
         <p>{apiData.published_at?.slice(0, 10)}</p>
         <p>{apiData.name}</p>
         <p>{apiData.type}</p>
       </div>
+
     </div>
   );
 };

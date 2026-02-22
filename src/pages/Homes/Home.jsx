@@ -1,43 +1,41 @@
-import React from 'react'
-import './Home.css'
+import React, { useState } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
-import banner from '../../assets/cards/diana.avif'
-import play from '../../assets/cards/play1.png'
-import info from '../../assets/cards/more_info.png'
-import title from '../../assets/cards/crown1.png'
 import Titlecards from '../../components/Titlecards/Titlecards'
 import Footer from '../../components/Footer/Footer'
 
 const Home = () => {
+  const [hoveredTrailer, setHoveredTrailer] = useState(null)
+
   return (
-    <div className='home'>
+    <div className="relative">
+
+      {/* 🔥 Background Trailer */}
+      {hoveredTrailer && (
+        <iframe
+          className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"
+          src={`https://www.youtube.com/embed/${hoveredTrailer}?autoplay=1&mute=1&controls=0&loop=1&playlist=${hoveredTrailer}`}
+          title="Movie Trailer"
+          allow="autoplay"
+        />
+      )}
+
+      {/* 🔥 Dark Gradient Overlay */}
+      <div className="fixed inset-0 bg-gradient-to-t from-black via-black/60 to-transparent -z-10"></div>
+
       <Navbar />
-      <div className='hero'>
-        <img src={banner} alt="" className='banner-img' />
-        <div className="hero-caption">
-          <img src={title} alt="" className='caption-img' />
-          <p>
-           Love, legacy, and the price of being Diana.She lived with heart, but the crown demanded silence.
-          </p>
-          <div className="hero-btns">
-            <button className='btn'><img src={play} alt="" />Play</button>
-            <button className='btn dark-btn'><img src={info} alt="" />More Info</button>
-          </div>
-          <Titlecards />
-        </div>
+
+      {/* Movie Sections */}
+      <div className="pl-[6%] md:pl-[4%] relative z-10">
+        <Titlecards setHoveredTrailer={setHoveredTrailer} />
+        <Titlecards title="Blockbuster Movies" category="top_rated" setHoveredTrailer={setHoveredTrailer} />
+        <Titlecards title="Only on Netflix" category="popular" setHoveredTrailer={setHoveredTrailer} />
+        <Titlecards title="Upcoming" category="upcoming" setHoveredTrailer={setHoveredTrailer} />
+        <Titlecards title="Top picks for you" category="now_playing" setHoveredTrailer={setHoveredTrailer} />
       </div>
-      <div className='more-cards'>
-        <Titlecards title={"Blockbuster Movies"} category={"top_rated"} />
-        <Titlecards title={"Only on Netflix"} category={"popular"} />
-        <Titlecards title={"Upcoming"} category={"upcoming"} />
-        <Titlecards title={"Top picks for you"} category={"now_playing"} />
-      </div>
+
       <Footer />
     </div>
   )
 }
 
-
 export default Home
-
-
