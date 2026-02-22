@@ -19,11 +19,7 @@ A Netflix-inspired web application built using React and Tailwind CSS that simul
 - React Router DOM
 - Context API (State Management)
 
-### API Integration
-- TMDB (The Movie Database) API
-- YouTube Embedded Player for trailer playback
 
----
 
 ## ✨ Features
 
