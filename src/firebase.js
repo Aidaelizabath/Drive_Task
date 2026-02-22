@@ -9,14 +9,15 @@ import {
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { toast } from "react-toastify";
 
+// 🔑 Read from environment variables
 const firebaseConfig = {
-  apiKey: "AIzaSyDHn81p2lBtDoy9_BVF_JJIjJnikZpDXTo",
-  authDomain: "netflix-clone-project-83c61.firebaseapp.com",
-  projectId: "netflix-clone-project-83c61",
-  storageBucket: "netflix-clone-project-83c61.firebasestorage.app",
-  messagingSenderId: "84575287952",
-  appId: "1:84575287952:web:768d61dcc7ab318f803615",
-  measurementId: "G-M4DWCKMQFE",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
@@ -61,4 +62,3 @@ const logout = async () => {
 };
 
 export { auth, db, login, signup, logout };
-
